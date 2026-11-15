@@ -8,7 +8,10 @@ All notable changes to lib-plugins. Versions follow [Semantic Versioning](https:
 ## [0.3.0]
 
 ### Changed
-- Pins lib-sync v0.2.0 (was v0.1.6). plugins-contexts re-exports sync-core's `valid_context` as `valid_id`, so this is
+- Rust 1.91 is the oldest these crates build with (`rust-version` 1.85 -> 1.91), as lib-sync 0.2.1 needs: Ubuntu's newest
+  versioned rustc in noble-updates and jammy-updates, which Pythia builds with (owner, 2026-11-12). The lock takes the
+  newest compatible version of every dependency.
+- Pins lib-sync v0.2.1 (was v0.1.6). plugins-contexts re-exports sync-core's `valid_context` as `valid_id`, so this is
   a new minor version. droidtop, droidtop-agent, lib-games and lib-saves move to lib-sync 0.2 together
   (Droidtop/tracker#573).
 
