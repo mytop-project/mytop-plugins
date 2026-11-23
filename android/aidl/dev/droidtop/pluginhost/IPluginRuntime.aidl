@@ -101,7 +101,7 @@ interface IPluginRuntime {
     void resizeScreen(String pluginId, int width, int height);
 
     /**
-     * The secret the one-way screen calls below carry (Droidtop/tracker#511): a one-way call has no caller pid, so
+     * The secret the one-way screen calls below carry (mytop-project/tracker#511): a one-way call has no caller pid, so
      * those calls cannot be checked the way every other call is. droidtop asks for it once, over this checked call,
      * after attachScreen; a process of droidtop's UID that is not droidtop cannot get it.
      */

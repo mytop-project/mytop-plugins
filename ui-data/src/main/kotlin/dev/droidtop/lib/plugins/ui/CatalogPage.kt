@@ -1,12 +1,12 @@
 package dev.droidtop.lib.plugins.ui
 
-// droidtop runtime-common's dev.droidtop.library.settings CatalogPage.kt, moved here (Droidtop/tracker#867, ui-shared step 3):
+// droidtop runtime-common's dev.droidtop.library.settings CatalogPage.kt, moved here (mytop-project/tracker#867, ui-shared step 3):
 // the same model, generic over the host [H] its callbacks are handed (droidtop's is android.content.Context, which it
 // keeps as typealiases in its own package). SPEC and tracker references are droidtop's.
 
 
 /**
- * A catalog screen as a PAGE (docs/SPEC.md 7k, "Page anatomy"; Droidtop/tracker#485 F2a, final design C.1
+ * A catalog screen as a PAGE (docs/SPEC.md 7k, "Page anatomy"; mytop-project/tracker#485 F2a, final design C.1
  * and C.2): a header that says what the page is about, a bar of at most three buttons that do the page's
  * job (plus a "More" overflow for the rest), then the sections. The header is never a stop; the button bar
  * is the first stop and has the cursor when the page opens; destructive buttons live in the overflow or

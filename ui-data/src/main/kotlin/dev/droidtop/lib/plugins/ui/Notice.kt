@@ -1,6 +1,6 @@
 package dev.droidtop.lib.plugins.ui
 
-// droidtop runtime-common's dev.droidtop.library.settings Notice.kt, moved here (Droidtop/tracker#867, ui-shared step 3):
+// droidtop runtime-common's dev.droidtop.library.settings Notice.kt, moved here (mytop-project/tracker#867, ui-shared step 3):
 // the same model, generic over the host [H] its callbacks are handed (droidtop's is android.content.Context, which it
 // keeps as typealiases in its own package). SPEC and tracker references are droidtop's.
 
@@ -9,7 +9,7 @@ package dev.droidtop.lib.plugins.ui
  * How serious a [Notice] is (docs/SPEC.md 7k, "Notices"). Danger is for what
  * the person is about to lose or risk now: droidtop's danger dialog (an
  * install, an update from a different maker, protection failing to start)
- * and, since 2026-10-15 (Droidtop/tracker#521 item 1), a plugin's own danger
+ * and, since 2026-10-15 (mytop-project/tracker#521 item 1), a plugin's own danger
  * notice, still marked as from the plugin. Never a flash.
  */
 enum class NoticeTone { Info, Caution, Danger }
@@ -30,7 +30,7 @@ class NoticeAction<H>(val label: String, val run: suspend (H) -> Unit)
 
 /**
  * One condition the person should know about, in one shape every surface
- * draws the same way (docs/SPEC.md 7k, "Notices"; Droidtop/tracker#485).
+ * draws the same way (docs/SPEC.md 7k, "Notices"; mytop-project/tracker#485).
  * The copy rules are SPEC's: [title] states the condition in at most
  * [TITLE_MAX] characters and no period, [body] the outcome in at most
  * [BODY_MAX], [details] the exact terms (copyable, shown in Info), and

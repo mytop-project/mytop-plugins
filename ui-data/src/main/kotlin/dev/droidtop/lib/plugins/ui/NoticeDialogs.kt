@@ -1,6 +1,6 @@
 package dev.droidtop.lib.plugins.ui
 
-// droidtop runtime-common's dev.droidtop.library.settings NoticeDialogs.kt, moved here (Droidtop/tracker#867, ui-shared step 3):
+// droidtop runtime-common's dev.droidtop.library.settings NoticeDialogs.kt, moved here (mytop-project/tracker#867, ui-shared step 3):
 // the same model, generic over the host [H] its callbacks are handed (droidtop's is android.content.Context, which it
 // keeps as typealiases in its own package). SPEC and tracker references are droidtop's.
 
@@ -64,7 +64,7 @@ object NoticeDialogs {
 
     /**
      * Waits up to [timeoutMs] for a surface to attach; true once one is. For a question asked during a switch, when
-     * the screen just left has no host and the one arriving attaches only once it composes (Droidtop/tracker#389:
+     * the screen just left has no host and the one arriving attaches only once it composes (mytop-project/tracker#389:
      * the keep-running offer was answered Cancel before Gaming could draw it).
      */
     suspend fun awaitHost(timeoutMs: Long): Boolean =

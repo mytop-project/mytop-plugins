@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to lib-plugins. Versions follow [Semantic Versioning](https://semver.org/)
+All notable changes to mytop-plugins. Versions follow [Semantic Versioning](https://semver.org/)
 (in 0.x, only a new minor version may break the interface; CI's `semver` job enforces it).
 
 ## [Unreleased]
@@ -8,12 +8,12 @@ All notable changes to lib-plugins. Versions follow [Semantic Versioning](https:
 ## [0.3.0]
 
 ### Changed
-- Rust 1.91 is the oldest these crates build with (`rust-version` 1.85 -> 1.91), as lib-sync 0.2.1 needs: Ubuntu's newest
+- Rust 1.91 is the oldest these crates build with (`rust-version` 1.85 -> 1.91), as mytop-sync 0.2.1 needs: Ubuntu's newest
   versioned rustc in noble-updates and jammy-updates, which Pythia builds with (owner, 2026-11-12). The lock takes the
   newest compatible version of every dependency.
-- Pins lib-sync v0.2.1 (was v0.1.6). plugins-contexts re-exports sync-core's `valid_context` as `valid_id`, so this is
-  a new minor version. droidtop, droidtop-agent, lib-games and lib-saves move to lib-sync 0.2 together
-  (Droidtop/tracker#573).
+- Pins mytop-sync v0.2.1 (was v0.1.6). plugins-contexts re-exports sync-core's `valid_context` as `valid_id`, so this is
+  a new minor version. droidtop, droidtop-agent, mytop-games and mytop-saves move to mytop-sync 0.2 together
+  (mytop-project/tracker#573).
 
 ## [0.2.3]
 
@@ -21,7 +21,7 @@ All notable changes to lib-plugins. Versions follow [Semantic Versioning](https:
 - `ui-data`, a plain-JVM Kotlin module: the catalog model droidtop's settings and pages are built from, moved from
   droidtop runtime-common's `dev.droidtop.library.settings` (`SettingsCatalog.kt`, `Notice.kt`, `CatalogPage.kt`,
   `JobLook.kt`, `StatusMark.kt`, `NoticeDialogs.kt`), generic over the host [H] its callbacks are handed, so the shared
-  UI can draw it without droidtop (Droidtop/tracker#867, ui-shared step 3). What only one host can show (droidtop's
+  UI can draw it without droidtop (mytop-project/tracker#867, ui-shared step 3). What only one host can show (droidtop's
   folder and document pickers, Launcher3's settings) extends the new `PlatformItem`; `NestedScreenItem.resolve` takes the
   host's registry of screens. droidtop's tests of this code (`NoticeTest`, `NoticeDialogsTest`) moved with it, run through
   typealiases over a host as droidtop will use them; `CatalogTest` is new. Its API is checked in
@@ -31,20 +31,20 @@ All notable changes to lib-plugins. Versions follow [Semantic Versioning](https:
 
 ### Changed
 - Builds with Rust 1.85 (`rust-version` 1.89 → 1.85): Pythia builds these crates with Ubuntu's rustc-1.85, as
-  Launchpad does. 1.89 came from droidtop-agent b5e7094, only for std's `File::lock`, which lib-sync 0.1.6 no
+  Launchpad does. 1.89 came from droidtop-agent b5e7094, only for std's `File::lock`, which mytop-sync 0.1.6 no
   longer needs. A new `msrv` CI job checks the workspace with 1.85, resolving dependencies to versions 1.85 can
   build, as a consumer's lock would.
-- Pins lib-sync v0.1.6, the release that builds with 1.85.
+- Pins mytop-sync v0.1.6, the release that builds with 1.85.
 
 ## [0.2.1]
 
 ### Added
 - CI's `semver` job: `cargo-semver-checks` against the last release, so a breaking change fails unless its version and
-  this CHANGELOG say so (Droidtop/tracker#867).
+  this CHANGELOG say so (mytop-project/tracker#867).
 
 ### Changed
-- `plugins-contexts`: built on lib-sync v0.1.2 (cross-store links, Droidtop/tracker#798), so droidtop-agent can take
-  lib-sync v0.1.2 and link one sync-core.
+- `plugins-contexts`: built on mytop-sync v0.1.2 (cross-store links, mytop-project/tracker#798), so droidtop-agent can take
+  mytop-sync v0.1.2 and link one sync-core.
 
 ## [0.2.0]
 
@@ -52,7 +52,7 @@ All notable changes to lib-plugins. Versions follow [Semantic Versioning](https:
 - `android/aidl`: the plugin host's Android interface (`IPluginRuntime`, `IPluginRuntimeCallback`,
   `IPluginHostBroker`, `IAppInterfaceDoor`, package `dev.droidtop.pluginhost`), which droidtop and Enginehost each
   copied by hand and whose copies had drifted (Enginehost's `IPluginRuntime` still described contract 1). droidtop's
-  current files, moved unchanged; CI compiles them with the SDK's `aidl`. Droidtop/tracker#867 step 1.
+  current files, moved unchanged; CI compiles them with the SDK's `aidl`. mytop-project/tracker#867 step 1.
 
 ## [0.1.3]
 
@@ -65,16 +65,16 @@ All notable changes to lib-plugins. Versions follow [Semantic Versioning](https:
 ## [0.1.2]
 
 ### Changed
-- Built on lib-sync v0.1.1, as 0.1.1 meant to be. 0.1.1 was released with its pins unchanged (still lib-sync
+- Built on mytop-sync v0.1.1, as 0.1.1 meant to be. 0.1.1 was released with its pins unchanged (still mytop-sync
   v0.1.0), so it is the same as 0.1.0; use 0.1.2.
 
 ## [0.1.1]
 
 ### Changed
-- Built on lib-sync v0.1.1 (sync-core 0.1.1: a forgotten device is told it is not paired), so a program
-  using this library and lib-sync links one copy of sync-core.
+- Built on mytop-sync v0.1.1 (sync-core 0.1.1: a forgotten device is told it is not paired), so a program
+  using this library and mytop-sync links one copy of sync-core.
 
 ## [0.1.0]
 
 ### Added
-- `plugins-contexts`: context adapters: the programs plugins publish to sync their supporting state, offered, approved, installed and run. Moved from droidtop-agent `0ec4110` `crates/contexts` unchanged but for its package name (Droidtop/tracker#867 step 1).
+- `plugins-contexts`: context adapters: the programs plugins publish to sync their supporting state, offered, approved, installed and run. Moved from droidtop-agent `0ec4110` `crates/contexts` unchanged but for its package name (mytop-project/tracker#867 step 1).
