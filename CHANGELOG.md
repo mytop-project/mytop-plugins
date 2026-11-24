@@ -5,6 +5,12 @@ All notable changes to mytop-plugins. Versions follow [Semantic Versioning](http
 
 ## [Unreleased]
 
+## [0.3.1]
+
+### Changed
+- The manifest names mytop-project and moves its pins to the renamed libraries (mytop-sync v0.2.2), so a program that pins this
+  tag finds one source for each library (a crate under two URLs is two crates to Cargo). Same code otherwise.
+
 ## [0.3.0]
 
 ### Changed
