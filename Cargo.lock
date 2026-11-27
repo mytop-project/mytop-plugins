@@ -1506,7 +1506,7 @@ dependencies = [
 
 [[package]]
 name = "plugins-contexts"
-version = "0.3.2"
+version = "0.3.3"
 dependencies = [
  "serde_json",
  "sha2 0.10.9",

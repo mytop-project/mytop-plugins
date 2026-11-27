@@ -41,3 +41,20 @@ arbitrary scripts, form fields and page bodies are not control messages. Existin
 Isolated browse exports only HTTPS page addresses, with no session cookies or
 download data. Cancellation, peer death and unclaimed offers release resources;
 fallback cannot replay a token already taken by a provider.
+
+## Download bodies without an embedded surface
+
+Android 26–29 and activity fallback use the independent `web.download.body.v1`
+relay, `IWebDownloadHost` and `IWebDownloadProvider`. Neither interface references
+surface types. `web-download-v1.json` defines its exact capability, metadata,
+limits and lifetime. The host negotiates the endpoint before an OPEN activity can
+take its request; offers still belong to that one-use taken token and finish
+through the existing broker result. A request chooses one body transport, so a
+surface and activity endpoint cannot duplicate its offers.
+
+Actual Gecko response bodies cannot be replayed as guessed GET requests. Hosts
+without the body capability receive an explicit update requirement. A host that
+accepts an offer owns the resulting download job and validates its pipe through
+EOF, reliable error, declared length and durable write before advancing it.
+The provider retains the owning response/session until accepted offers finish,
+are cancelled, or expire.

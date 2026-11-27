@@ -5,6 +5,14 @@ All notable changes to mytop-plugins. Versions follow [Semantic Versioning](http
 
 ## [Unreleased]
 
+## [0.3.3]
+
+### Added
+- A surface-independent response-body relay for Android 26+: `IWebDownloadHost` and
+  `IWebDownloadProvider`. Activity fallbacks can hand actual download bodies to the host's
+  existing jobs, with the same offer acknowledgement, scope and cancellation limits.
+  Existing surface interface transaction order is unchanged.
+
 ## [0.3.2]
 
 ### Added

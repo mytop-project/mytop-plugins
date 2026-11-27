@@ -1,0 +1,15 @@
+{
+  "relay": "web.download.body.v1",
+  "capability": "web.download.body.v1",
+  "minimumApi": 26,
+  "provider": ["download", "cancelDownload", "offerResult"],
+  "host": ["connected", "download"],
+  "surfaceIndependent": "No SurfacePackage or surface-interface reference in either AIDL or body-only implementation. Activity fallback can use actual response bodies on API26+.",
+  "ownership": "Host establishes a certificate/UID/grant-verified runtime endpoint and awaits capability handshake before launching an OPEN activity or allowing take_request. Endpoint belongs to the loaded Browser plugin; every offer names an existing live taken OPEN token. The same web.view.finish one-use result boundary applies.",
+  "metadataFields": ["sourceUrl", "fileName", "mimeType", "size"],
+  "metadata": "HTTPS page provenance <=4096 characters, no userinfo/controls; strict basename <=200 UTF8 bytes; optional MIME <=256 no controls; integer size -1 or0..64GiB. Metadata contains no file path, arbitrary headers, cookies, script or body bytes.",
+  "descriptor": "Only {streamOfferId:offerId} after explicit offerResult accepted. Host maps only known offers from this endpoint and token. Provenance URL is never a fallback retrieval address.",
+  "limits": "16 offers per token,32 globally,4 transfer workers,64GiB hard cap,60s unclaimed/stalled,60min total; host further restricts maxBytes/free space and validates declared length, reliable pipe error, EOF and fsync.",
+  "lifetime": "Provider holds actual Gecko response and owning session/context through page finish until accepted offers drain/cancel/expire. One-use download returns reliable PFD read end. Host death, permission loss and plugin unload fail transfers explicitly. Endpoint replacement does not silently revoke old accepted leases.",
+  "compatibility": "Existing web.view.surface.v1/v2 transaction order unchanged. New hosts can negotiate this body-only relay even without API30 surface support. Old hosts receive an explicit update-Droidtop capability message for supplied responses; no guessed GET replay, no captured-success or misleading same-page retry. URL-only callbacks are used only when Gecko did not supply an owned response."
+}
