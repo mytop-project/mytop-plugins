@@ -5,6 +5,13 @@ All notable changes to mytop-plugins. Versions follow [Semantic Versioning](http
 
 ## [Unreleased]
 
+## [0.3.2]
+
+### Added
+- Android web-provider surface interfaces: an API 30+ remote view, bounded navigation events,
+  explicit isolated-browse and download-body capabilities, one-use response pipes, and acceptance/cancellation.
+  The existing plugin runtime method order is unchanged. Consumers compile the new AIDL files from this repository.
+
 ## [0.3.1]
 
 ### Changed

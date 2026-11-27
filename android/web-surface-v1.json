@@ -1,0 +1,23 @@
+{
+  "relay": "web.view.surface.v2",
+  "legacyRelay": "web.view.surface.v1",
+  "bodyCapability": "web.download.body.v1",
+  "browseCapability": "web.browse.isolated.v1",
+  "minimumApi": 30,
+  "token": "Existing one-use web.view token; take_request/report_page/finish remain broker operations",
+  "provider": ["open", "surface", "resize", "back", "close", "download", "cancelDownload", "offerResult"],
+  "host": ["connected", "surfaceReady", "unavailable", "event", "download", "connectedCapabilities"],
+  "bodyFields": ["sourceUrl", "fileName", "mimeType", "size", "streamOfferId"],
+  "body": "v2 must explicitly announce web.download.body.v1 via connectedCapabilities. Host reserves validated offer metadata and acknowledges via offerResult. Only accepted offers appear as {streamOfferId} in finish. One-use download returns reliable pipe; no refetch. Metadata sourceUrl is HTTPS provenance, never a fallback retrieval address. Basename <=200 UTF8 bytes, mime <=256, size -1 or <=64GiB. Unclaimed60s, stalled60s, total60min; host applies stricter job limits/free space. v1 never receives body callbacks.",
+  "eventFields": ["type", "url", "title", "canGoBack", "loading", "code", "message"],
+  "events": {
+    "navigation": {"url": "HTTPS, no userinfo/control characters, at most 4096 characters", "title": "at most 512 characters", "canGoBack": "boolean"},
+    "loading": {"loading": "boolean"},
+    "error": {"code": "bounded stable code", "message": "at most 512 characters"}
+  },
+  "eventMaximumCharacters": 8192,
+  "results": "Only web.view.finish: approved-domain cookies, effective user agent, bounded HTTPS download handoffs; host validates scope and owns vault and transfers",
+  "browse": "Unique Gecko private context; no cookie import/read/export, no UA/download export; HTTPS navigation event only at host",
+  "failure": "Fallback only after withdrawUntaken; once taken, failure ends incomplete and cannot replay the token",
+  "ownership": "surface returns SurfacePackage through AIDL return-value flags; setChildSurfacePackage takes ownership of accepted packages; host releases only rejected/late packages; provider releases SCVH/session on close or host death"
+}
