@@ -58,3 +58,9 @@ accepts an offer owns the resulting download job and validates its pipe through
 EOF, reliable error, declared length and durable write before advancing it.
 The provider retains the owning response/session until accepted offers finish,
 are cancelled, or expire.
+
+The optional `web.hidden.v1` relay defines restricted document retrieval.
+`web-hidden-v1.json` specifies the isolated runtime, authorization, proxy,
+result and cancellation contract. Both document and runtime isolation
+capabilities are required before a host sends a request. The interfaces alone
+do not enable the feature.

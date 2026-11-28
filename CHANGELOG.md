@@ -5,6 +5,11 @@ All notable changes to mytop-plugins. Versions follow [Semantic Versioning](http
 
 ## [Unreleased]
 
+## [0.3.5]
+
+### Added
+- Define the optional isolated document retrieval relay and its bounded response transport.
+
 ## [0.3.4]
 
 ### Changed

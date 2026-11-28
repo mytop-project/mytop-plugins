@@ -1,0 +1,74 @@
+{
+  "relay": "web.hidden.v1",
+  "capability": "web.document.get.v1",
+  "isolationCapability": "web.runtime.isolated.v1",
+  "minimumApi": 30,
+  "provider": [
+    "start",
+    "body",
+    "cancel"
+  ],
+  "host": [
+    "connected",
+    "takeRequest",
+    "authorize",
+    "result",
+    "unavailable"
+  ],
+  "requestFields": [
+    "op",
+    "url",
+    "cookies",
+    "maxBytes",
+    "timeoutMs",
+    "proxy"
+  ],
+  "request": {
+    "op": "document",
+    "url": "HTTPS, no userinfo or control characters, at most 4096 characters",
+    "cookies": "Only initial request host, header at most 16384 characters without controls; a fresh isolated context",
+    "maxBytes": "1..131072 UTF-8 bytes",
+    "timeoutMs": "1..30000 milliseconds remaining in host deadline",
+    "proxy": "Host-owned per-operation descriptor: exactly host=127.0.0.1, port=1024..65535, authorization=Bearer plus 43 base64url characters (256 random bits), isolationKey=operation UUID. Never logged, persisted, returned or exposed to page JS. Host closes listener and every tunnel on operation completion/deadline/cancel."
+  },
+  "authorizeKinds": [
+    "document",
+    "frame",
+    "resource"
+  ],
+  "authorization": "Before every document, frame, resource and redirect network hop: exact provider UID, approved certificate and web.view point, live taken token and deadline, safe URL and current requesting plugin NetScope grants. Additional authenticated host CONNECT gateway resolves once, checks current local-network grant against the selected InetAddress, and connects that SAME address without a second name lookup. URL-side DNS checks alone are insufficient against rebinding. No public-CDN or Cloudflare exception. Credential main-navigation hop restrictions remain; cookies only go to their own approved origin.",
+  "proxyContainment": "Owned runtime uses channel-specific proxy selection from exact private originAttributes, explicit CONNECT-only Proxy-Authorization header and distinct operation connection isolation key. TLS origin serialization strips proxy-specific headers. No DIRECT failover, bypass list, localhost bypass, QUIC/HTTP3, WebRTC, speculative connect, prefetch, service worker, TRR or unowned default/background channels. Unknown/dead contexts cancel and select a non-null dead-end proxy. Main Browser uses a separate unchanged runtime.",
+  "resultFields": [
+    "kind",
+    "status",
+    "finalUrl",
+    "contentType",
+    "bodyBytes",
+    "truncated",
+    "effectiveUA",
+    "cookies",
+    "reason"
+  ],
+  "resultKinds": [
+    "document",
+    "challenged",
+    "permission_denied",
+    "failed"
+  ],
+  "result": {
+    "metadataMaximumCharacters": 32768,
+    "status": "Document requires the observed final HTTP status, 100..599. Unknown status is an explicit failure, never a synthesized 200; document snapshots are not raw HTTP response bodies",
+    "finalUrl": "HTTPS, at most 4096 characters; authorized before network dispatch and checked again on completion. Only kind=failed may omit this when request parsing never completed; host canonicalizes that omission to its immutable original request URL, never a caller-supplied fallback. Document/challenged/permission_denied require a safe URL.",
+    "contentType": "At most 256 characters, no control characters",
+    "bodyBytes": "Exact 0..maxBytes; body pipe EOF and reliable error must agree",
+    "truncated": "Must be false for document; overflow is an explicit failure, never partial success",
+    "effectiveUA": "At most 4096 characters, no controls",
+    "cookies": "Only initial request host, at most 16384 characters without controls; host vault only. Challenged may retain newly earned scoped clearance and effective UA without exporting the challenge body as a successful document.",
+    "reason": "Optional plain text, at most 512 characters, no secrets or body snippets"
+  },
+  "extraction": "Packaged fixed extractor selected only by exact generated private context. Isolated profile attests devtools.jsonview.enabled=false; JSON/plaintext uses document textContent, HTML uses rendered document markup, UTF-8 only. No caller scripts/selectors/form capture or checkout context access. Observed HTTP status is required; no synthesized status.",
+  "lifetime": "Host creates immutable random one-use token. takeRequest is acceptance. Before acceptance unavailable may use existing fallback policy; after acceptance failure cannot replay through HTTP or system WebView. Host cancellation, deadline, permission loss, death and completion close the pipe and isolated context. At most four operations globally.",
+  "hiddenOpen": "Not provided by web.document.get.v1. User-driven hidden download probes require a separate capability and existing browsing policy, not net.http scope applied blindly.",
+  "jsonSemantics": "Document-text contract, not wire-byte/compression identity. Valid UTF-8 JSON remains JSON text and is syntax-validated, never Firefox viewer labels. Browser document newline normalization may affect insignificant whitespace; JSON values/string escapes must remain unchanged. Unknown/non-UTF8 charset, replacement ambiguity, malformed JSON, missing observed status or any overflow fail explicitly. No truncated HTML/JSON success.",
+  "runtimeLimitations": "Trusted signed-provider software attests exact native profile, engine family, declared defaults, effective locked restrictions and isolated content allocator before capability announcement or document startup. This is not hardware attestation or runtime packet-capture proof. Dedicated process/profile networking preferences do not modify ordinary Browser. Required sandbox/child roles, all-hop guards and actual network containment remain rig checks."
+}
