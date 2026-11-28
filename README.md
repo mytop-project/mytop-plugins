@@ -50,5 +50,7 @@ yet tagged, so to release, raise that version (and the CHANGELOG) in the change 
 and the other libraries, depend on a tag:
 
 ```toml
-droidtop-agent-core = { package = "sync-core", git = "https://github.com/mytop-project/mytop-sync", tag = "v0.1.0" }
+droidtop-agent-core = { package = "sync-core", git = "https://github.com/mytop-project/mytop-sync", tag = "v0.2.4" }
 ```
+
+This release uses mytop-sync v0.2.4; programs importing its core types use the same tag throughout their library family.
