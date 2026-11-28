@@ -5,6 +5,11 @@ All notable changes to mytop-plugins. Versions follow [Semantic Versioning](http
 
 ## [Unreleased]
 
+## [0.3.4]
+
+### Changed
+- Use mytop-sync v0.2.3 throughout the shared library family, including cancellable pairing and generation-owned discovery offers. Consumer CI resolves the coordinated family together before testing.
+
 ## [0.3.3]
 
 ### Added

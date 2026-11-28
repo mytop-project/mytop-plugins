@@ -1506,7 +1506,7 @@ dependencies = [
 
 [[package]]
 name = "plugins-contexts"
-version = "0.3.3"
+version = "0.3.4"
 dependencies = [
  "serde_json",
  "sha2 0.10.9",
@@ -2093,8 +2093,8 @@ dependencies = [
 
 [[package]]
 name = "sync-core"
-version = "0.2.2"
-source = "git+https://github.com/mytop-project/mytop-sync?tag=v0.2.2#e54f899730cd15d26601ff6e3a08ef3c78dea1e2"
+version = "0.2.3"
+source = "git+https://github.com/mytop-project/mytop-sync?tag=v0.2.3#0234775933faf02049acfe1eea4267bddb5ca2f1"
 dependencies = [
  "age",
  "boringtun",
@@ -2118,8 +2118,8 @@ dependencies = [
 
 [[package]]
 name = "sync-store"
-version = "0.2.2"
-source = "git+https://github.com/mytop-project/mytop-sync?tag=v0.2.2#e54f899730cd15d26601ff6e3a08ef3c78dea1e2"
+version = "0.2.3"
+source = "git+https://github.com/mytop-project/mytop-sync?tag=v0.2.3#0234775933faf02049acfe1eea4267bddb5ca2f1"
 dependencies = [
  "dirs",
  "gethostname",
